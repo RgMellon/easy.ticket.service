@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum TicketStatus {
+  OPEN
+  COMPLETED
+}
+
+model Ticket {
+  id          String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name        String       @db.VarChar
+  description String?      @db.Text
+  clientId    String       @db.VarChar
+  status      TicketStatus @default(OPEN)
+  createdAt   DateTime     @default(now()) @db.Timestamptz
+  completedAt DateTime?    @db.Timestamptz
+}
