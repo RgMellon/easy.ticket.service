@@ -1,5 +1,6 @@
 import { Inject, Injectable, NotFoundException } from '@nestjs/common';
-import { TicketRepository, TICKET_REPOSITORY_TOKEN } from '../../domain/ticket.repository';
+import type { TicketRepository } from '../../domain/ticket.repository';
+import { TICKET_REPOSITORY_TOKEN } from '../../domain/ticket.repository';
 import { TicketEntity } from '../../domain/ticket.entity';
 
 @Injectable()
